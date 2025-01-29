@@ -1,114 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-    abstract class Person {
-        String name;
-        String surname;
-
-        public Person(String name, String surname) {
-            this.name = name;
-            this.surname = surname;
-        }
-
-        @Override
-        public String toString() {
-            return "Name: " + name + ", Surname: " + surname;
-        }
-    }
-
-    // Employee interface
-    interface Employee {
-        double calculateBonus();
-    }
-
-    // Economist class
-    class Economist extends Person implements Employee {
-        double salary;
-
-        public Economist(String name, String surname, double salary) {
-            super(name, surname);
-            this.salary = salary;
-        }
-
-        @Override
-        public double calculateBonus() {
-            return salary * 0.1; // 10% of salary
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + ", Salary: " + salary;
-        }
-    }
-
-    // Programmer class
-    class Programmer extends Person implements Employee {
-        double salary;
-        List<String> listOfTasks;
-
-        public Programmer(String name, String surname, double salary) {
-            super(name, surname);
-            this.salary = salary;
-            this.listOfTasks = new ArrayList<>();
-        }
-
-        @Override
-        public double calculateBonus() {
-            return salary * 0.05; // 5% of salary
-        }
-
-        public void addTask(String task) {
-            listOfTasks.add(task);
-        }
-
-        public void printTasks() {
-            // Implement sorting tasks by time spent
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + ", Salary: " + salary;
-        }
-    }
-
-    // Customer class
-    class Customer extends Person {
-        double balance;
-
-        public Customer(String name, String surname, double balance) {
-            super(name, surname);
-            this.balance = balance;
-        }
-
-        public void credit(double amount) {
-            balance += amount;
-        }
-
-        public void debit(double amount) {
-            if (balance >= amount) {
-                balance -= amount;
-            } else {
-                System.out.println("Insufficient funds.");
-            }
-        }
-
-        public void transfer(Customer recipient, double amount) {
-            if (balance >= amount) {
-                debit(amount);
-                recipient.credit(amount);
-                System.out.println("Transfer successful.");
-            } else {
-                System.out.println("Insufficient funds for transfer.");
-            }
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + ", Balance: " + balance;
-        }
-    }
-
-
 
     class Main {
         public static void main(String[] args) {
@@ -150,6 +42,13 @@ import java.util.Scanner;
             sender.transfer(recipient, transferAmount);
             System.out.println(sender);
             System.out.println(recipient);
+        }
+
+        @Override
+        public String toString() {
+            String name = null;
+            String surname = null;
+            return "Name: " + name + ", Surname: " + surname;
         }
     }
 
